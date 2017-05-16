@@ -1,0 +1,895 @@
+-- MySQL dump 10.16  Distrib 10.1.22-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: catalogo
+-- ------------------------------------------------------
+-- Server version	10.1.22-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `dvd`
+--
+
+DROP TABLE IF EXISTS `dvd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dvd` (
+  `codigo` smallint(6) NOT NULL DEFAULT '0',
+  `titulo` varchar(40) NOT NULL,
+  `artista` varchar(30) NOT NULL,
+  `pais` char(2) NOT NULL DEFAULT '??',
+  `compania` varchar(40) NOT NULL,
+  `precio` decimal(6,2) DEFAULT NULL,
+  `anio` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `pais` (`pais`),
+  CONSTRAINT `dvd_ibfk_1` FOREIGN KEY (`pais`) REFERENCES `pais` (`iso2`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dvd`
+--
+
+LOCK TABLES `dvd` WRITE;
+/*!40000 ALTER TABLE `dvd` DISABLE KEYS */;
+INSERT INTO `dvd` VALUES (100,'Empire Burlesque','Bob Dylan','US','Columbia',10.90,'1985'),(101,'Hide your heart','Bonnie Tyler','GB','CBS Records',9.90,'1988'),(102,'Grandes Exitos','Dolly Parton Sheep','PT','RCA',8.90,'2014'),(103,'Still got the blues','Gary Moore','GB','Virgin records',10.20,'1990'),(104,'Eros','Eros Ramazzotti','DE','BMG',9.90,'1997'),(105,'One night only','Bee Gees','GB','Polydor',10.90,'1998'),(106,'Sylvias Mother','Dr.Hook','GB','CBS',8.10,'1973'),(107,'Maggie May','Rod Stewart','GB','Pickwick',8.50,'1990'),(108,'Romanza','Andrea Bocelli','DE','Polydor',10.80,'1996'),(109,'When a man loves a woman','Percy Sledge','US','Atlantic',8.70,'1987'),(110,'Black angel','Savage Rose','DE','Mega',10.90,'1995'),(111,'1999 Grammy Nominees','Many','US','Grammy',10.20,'1999'),(112,'For the good times','Kenny Rogers','GB','Mucik Master',8.70,'1995'),(113,'Big Willie style','Will Smith','US','Columbia',9.90,'1997'),(114,'Tupelo Honey','Van Morrison','GB','Polydor',8.20,'1971'),(115,'Soulsville','Jorn Hoel','NO','WEA',7.90,'1996'),(116,'The very best of','Cat Stevens','GB','Island',8.90,'1990'),(117,'Stop','Sam Brown','GB','A and M',8.90,'1988'),(120,'Bridge of Spies','T\'Pau','GB','Siren',7.90,'1987'),(121,'Private Dancer','Tina Turner','GB','Capitol',8.90,'1983'),(125,'Pavarotti Gala Concert','Luciano Pavarotti','GB','DECCA',9.90,'1991'),(126,'The dock of the bay','Otis Redding','US','Atlantic',7.90,'1987'),(1000,'The Dark Side of the Moon','Pink Floyd','GB','Estudios Abbey Road',15.90,'1973'),(1030,'Unchain my heart','Joe Cocker','US','EMI',8.20,'1987'),(1122,'Midt om natten','Kim Larsen','DE','Medley',7.80,'1983'),(1127,'Picture book','Simply Red','DE','Elektra',7.20,'1985'),(1129,'Red','The Communards','GB','London',7.80,'1987');
+/*!40000 ALTER TABLE `dvd` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pais`
+--
+
+DROP TABLE IF EXISTS `pais`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pais` (
+  `nombre` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `iso2` char(2) DEFAULT NULL,
+  `iso3` char(3) DEFAULT NULL,
+  `phone_code` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`nombre`),
+  KEY `iso2` (`iso2`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pais`
+--
+
+LOCK TABLES `pais` WRITE;
+/*!40000 ALTER TABLE `pais` DISABLE KEYS */;
+INSERT INTO `pais` VALUES ('Afganistán','Afghanistan','Afghanistan','AF','AFG','93'),('Albania','Albania','Albanie','AL','ALB','355'),('Alemania','Germany','Allemagne','DE','DEU','49'),('Algeria','Algeria','Algérie','DZ','DZA','213'),('Andorra','Andorra','Andorra','AD','AND','376'),('Angola','Angola','Angola','AO','AGO','244'),('Anguila','Anguilla','Anguilla','AI','AIA','1 264'),('Antártida','Antarctica','L\'Antarctique','AQ','ATA','672'),('Antigua y Barbuda','Antigua and Barbuda','Antigua et Barbuda','AG','ATG','1 268'),('Antillas Neerlandesas','Netherlands Antilles','Antilles Néerlandaises','AN','ANT','599'),('Arabia Saudita','Saudi Arabia','Arabie Saoudite','SA','SAU','966'),('Argentina','Argentina','Argentine','AR','ARG','54'),('Armenia','Armenia','L\'Arménie','AM','ARM','374'),('Aruba','Aruba','Aruba','AW','ABW','297'),('Australia','Australia','Australie','AU','AUS','61'),('Austria','Austria','Autriche','AT','AUT','43'),('Azerbayán','Azerbaijan','L\'Azerbaïdjan','AZ','AZE','994'),('Bahamas','Bahamas','Bahamas','BS','BHS','1 242'),('Bahrein','Bahrain','Bahreïn','BH','BHR','973'),('Bangladesh','Bangladesh','Bangladesh','BD','BGD','880'),('Barbados','Barbados','Barbade','BB','BRB','1 246'),('Bélgica','Belgium','Belgique','BE','BEL','32'),('Belice','Belize','Belize','BZ','BLZ','501'),('Benín','Benin','Bénin','BJ','BEN','229'),('Bhután','Bhutan','Le Bhoutan','BT','BTN','975'),('Bielorrusia','Belarus','Biélorussie','BY','BLR','375'),('Birmania','Myanmar','Myanmar','MM','MMR','95'),('Bolivia','Bolivia','Bolivie','BO','BOL','591'),('Bosnia y Herzegovina','Bosnia and Herzegovina','Bosnie-Herzégovine','BA','BIH','387'),('Botsuana','Botswana','Botswana','BW','BWA','267'),('Brasil','Brazil','Brésil','BR','BRA','55'),('Brunéi','Brunei','Brunei','BN','BRN','673'),('Bulgaria','Bulgaria','Bulgarie','BG','BGR','359'),('Burkina Faso','Burkina Faso','Burkina Faso','BF','BFA','226'),('Burundi','Burundi','Burundi','BI','BDI','257'),('Cabo Verde','Cape Verde','Cap-Vert','CV','CPV','238'),('Camboya','Cambodia','Cambodge','KH','KHM','855'),('Camerún','Cameroon','Cameroun','CM','CMR','237'),('Canadá','Canada','Canada','CA','CAN','1'),('Chad','Chad','Tchad','TD','TCD','235'),('Chile','Chile','Chili','CL','CHL','56'),('China','China','Chine','CN','CHN','86'),('Chipre','Cyprus','Chypre','CY','CYP','357'),('Ciudad del Vaticano','Vatican City State','Cité du Vatican','VA','VAT','39'),('Colombia','Colombia','Colombie','CO','COL','57'),('Comoras','Comoros','Comores','KM','COM','269'),('Congo','Congo','Congo','CG','COG','242'),('Corea del Norte','North Korea','Corée du Nord','KP','PRK','850'),('Corea del Sur','South Korea','Corée du Sud','KR','KOR','82'),('Costa de Marfil','Ivory Coast','Côte-d\'Ivoire','CI','CIV','225'),('Costa Rica','Costa Rica','Costa Rica','CR','CRI','506'),('Croacia','Croatia','Croatie','HR','HRV','385'),('Cuba','Cuba','Cuba','CU','CUB','53'),('Dinamarca','Denmark','Danemark','DK','DNK','45'),('Dominica','Dominica','Dominique','DM','DMA','1 767'),('Ecuador','Ecuador','Equateur','EC','ECU','593'),('Egipto','Egypt','Egypte','EG','EGY','20'),('El Salvador','El Salvador','El Salvador','SV','SLV','503'),('Emiratos Árabes Unidos','United Arab Emirates','Emirats Arabes Unis','AE','ARE','971'),('Eritrea','Eritrea','Erythrée','ER','ERI','291'),('Eslovaquia','Slovakia','Slovaquie','SK','SVK','421'),('Eslovenia','Slovenia','Slovénie','SI','SVN','386'),('España','Spain','Espagne','ES','ESP','34'),('Estados Unidos de América','United States of America','États-Unis d\'Amérique','US','USA','1'),('Estonia','Estonia','L\'Estonie','EE','EST','372'),('Etiopía','Ethiopia','Ethiopie','ET','ETH','251'),('Filipinas','Philippines','Philippines','PH','PHL','63'),('Finlandia','Finland','Finlande','FI','FIN','358'),('Fiyi','Fiji','Fidji','FJ','FJI','679'),('Francia','France','France','FR','FRA','33'),('Gabón','Gabon','Gabon','GA','GAB','241'),('Gambia','Gambia','Gambie','GM','GMB','220'),('Georgia','Georgia','Géorgie','GE','GEO','995'),('Ghana','Ghana','Ghana','GH','GHA','233'),('Gibraltar','Gibraltar','Gibraltar','GI','GIB','350'),('Granada','Grenada','Grenade','GD','GRD','1 473'),('Grecia','Greece','Grèce','GR','GRC','30'),('Groenlandia','Greenland','Groenland','GL','GRL','299'),('Guadalupe','Guadeloupe','Guadeloupe','GP','GLP',''),('Guam','Guam','Guam','GU','GUM','1 671'),('Guatemala','Guatemala','Guatemala','GT','GTM','502'),('Guayana Francesa','French Guiana','Guyane française','GF','GUF',''),('Guernsey','Guernsey','Guernesey','GG','GGY',''),('Guinea','Guinea','Guinée','GN','GIN','224'),('Guinea Ecuatorial','Equatorial Guinea','Guinée Equatoriale','GQ','GNQ','240'),('Guinea-Bissau','Guinea-Bissau','Guinée-Bissau','GW','GNB','245'),('Guyana','Guyana','Guyane','GY','GUY','592'),('Haití','Haiti','Haïti','HT','HTI','509'),('Honduras','Honduras','Honduras','HN','HND','504'),('Hong kong','Hong Kong','Hong Kong','HK','HKG','852'),('Hungría','Hungary','Hongrie','HU','HUN','36'),('India','India','Inde','IN','IND','91'),('Indonesia','Indonesia','Indonésie','ID','IDN','62'),('Irak','Iraq','Irak','IQ','IRQ','964'),('Irán','Iran','Iran','IR','IRN','98'),('Irlanda','Ireland','Irlande','IE','IRL','353'),('Isla Bouvet','Bouvet Island','Bouvet Island','BV','BVT',''),('Isla de Man','Isle of Man','Ile de Man','IM','IMN','44'),('Isla de Navidad','Christmas Island','Christmas Island','CX','CXR','61'),('Isla Norfolk','Norfolk Island','Île de Norfolk','NF','NFK',''),('Islandia','Iceland','Islande','IS','ISL','354'),('Islas Bermudas','Bermuda Islands','Bermudes','BM','BMU','1 441'),('Islas Caimán','Cayman Islands','Iles Caïmans','KY','CYM','1 345'),('Islas Cocos (Keeling)','Cocos (Keeling) Islands','Cocos (Keeling','CC','CCK','61'),('Islas Cook','Cook Islands','Iles Cook','CK','COK','682'),('Islas de Åland','Åland Islands','Îles Åland','AX','ALA',''),('Islas Feroe','Faroe Islands','Iles Féro','FO','FRO','298'),('Islas Georgias del Sur y Sandwich del Sur','South Georgia and the South Sandwich Islands','Géorgie du Sud et les Îles Sandwich du Sud','GS','SGS',''),('Islas Heard y McDonald','Heard Island and McDonald Islands','Les îles Heard et McDonald','HM','HMD',''),('Islas Maldivas','Maldives','Maldives','MV','MDV','960'),('Islas Malvinas','Falkland Islands (Malvinas)','Iles Falkland (Malvinas','FK','FLK','500'),('Islas Marianas del Norte','Northern Mariana Islands','Iles Mariannes du Nord','MP','MNP','1 670'),('Islas Marshall','Marshall Islands','Iles Marshall','MH','MHL','692'),('Islas Pitcairn','Pitcairn Islands','Iles Pitcairn','PN','PCN','870'),('Islas Salomón','Solomon Islands','Iles Salomon','SB','SLB','677'),('Islas Turcas y Caicos','Turks and Caicos Islands','Iles Turques et Caïques','TC','TCA','1 649'),('Islas Ultramarinas Menores de Estados Unidos','United States Minor Outlying Islands','États-Unis Îles mineures éloignées','UM','UMI',''),('Islas Vírgenes Británicas','Virgin Islands','Iles Vierges','VG','VG','1 284'),('Islas Vírgenes de los Estados Unidos','United States Virgin Islands','Îles Vierges américaines','VI','VIR','1 340'),('Israel','Israel','Israël','IL','ISR','972'),('Italia','Italy','Italie','IT','ITA','39'),('Jamaica','Jamaica','Jamaïque','JM','JAM','1 876'),('Japón','Japan','Japon','JP','JPN','81'),('Jersey','Jersey','Maillot','JE','JEY',''),('Jordania','Jordan','Jordan','JO','JOR','962'),('Kazajistán','Kazakhstan','Le Kazakhstan','KZ','KAZ','7'),('Kenia','Kenya','Kenya','KE','KEN','254'),('Kirgizstán','Kyrgyzstan','Kirghizstan','KG','KGZ','996'),('Kiribati','Kiribati','Kiribati','KI','KIR','686'),('Kuwait','Kuwait','Koweït','KW','KWT','965'),('Laos','Laos','Laos','LA','LAO','856'),('Lesoto','Lesotho','Lesotho','LS','LSO','266'),('Letonia','Latvia','La Lettonie','LV','LVA','371'),('Líbano','Lebanon','Liban','LB','LBN','961'),('Liberia','Liberia','Liberia','LR','LBR','231'),('Libia','Libya','Libye','LY','LBY','218'),('Liechtenstein','Liechtenstein','Liechtenstein','LI','LIE','423'),('Lituania','Lithuania','La Lituanie','LT','LTU','370'),('Luxemburgo','Luxembourg','Luxembourg','LU','LUX','352'),('Macao','Macao','Macao','MO','MAC','853'),('Macedônia','Macedonia','Macédoine','MK','MKD','389'),('Madagascar','Madagascar','Madagascar','MG','MDG','261'),('Malasia','Malaysia','Malaisie','MY','MYS','60'),('Malawi','Malawi','Malawi','MW','MWI','265'),('Mali','Mali','Mali','ML','MLI','223'),('Malta','Malta','Malte','MT','MLT','356'),('Marruecos','Morocco','Maroc','MA','MAR','212'),('Martinica','Martinique','Martinique','MQ','MTQ',''),('Mauricio','Mauritius','Iles Maurice','MU','MUS','230'),('Mauritania','Mauritania','Mauritanie','MR','MRT','222'),('Mayotte','Mayotte','Mayotte','YT','MYT','262'),('México','Mexico','Mexique','MX','MEX','52'),('Micronesia','Estados Federados de','Federados Estados de','FM','FSM','691'),('Moldavia','Moldova','Moldavie','MD','MDA','373'),('Mónaco','Monaco','Monaco','MC','MCO','377'),('Mongolia','Mongolia','Mongolie','MN','MNG','976'),('Montenegro','Montenegro','Monténégro','ME','MNE','382'),('Montserrat','Montserrat','Montserrat','MS','MSR','1 664'),('Mozambique','Mozambique','Mozambique','MZ','MOZ','258'),('Namibia','Namibia','Namibie','NA','NAM','264'),('Nauru','Nauru','Nauru','NR','NRU','674'),('Nepal','Nepal','Népal','NP','NPL','977'),('Nicaragua','Nicaragua','Nicaragua','NI','NIC','505'),('Niger','Niger','Niger','NE','NER','227'),('Nigeria','Nigeria','Nigeria','NG','NGA','234'),('Niue','Niue','Niou','NU','NIU','683'),('Noruega','Norway','Norvège','NO','NOR','47'),('Nueva Caledonia','New Caledonia','Nouvelle-Calédonie','NC','NCL','687'),('Nueva Zelanda','New Zealand','Nouvelle-Zélande','NZ','NZL','64'),('Omán','Oman','Oman','OM','OMN','968'),('Países Bajos','Netherlands','Pays-Bas','NL','NLD','31'),('Pakistán','Pakistan','Pakistan','PK','PAK','92'),('Palau','Palau','Palau','PW','PLW','680'),('Palestina','Palestine','La Palestine','PS','PSE',''),('Panamá','Panama','Panama','PA','PAN','507'),('Papúa Nueva Guinea','Papua New Guinea','Papouasie-Nouvelle-Guinée','PG','PNG','675'),('Paraguay','Paraguay','Paraguay','PY','PRY','595'),('Perú','Peru','Pérou','PE','PER','51'),('Polinesia Francesa','French Polynesia','Polynésie française','PF','PYF','689'),('Polonia','Poland','Pologne','PL','POL','48'),('Portugal','Portugal','Portugal','PT','PRT','351'),('Puerto Rico','Puerto Rico','Porto Rico','PR','PRI','1'),('Qatar','Qatar','Qatar','QA','QAT','974'),('Reino Unido','United Kingdom','Royaume-Uni','GB','GBR','44'),('República Centroafricana','Central African Republic','République Centrafricaine','CF','CAF','236'),('República Checa','Czech Republic','République Tchèque','CZ','CZE','420'),('República Dominicana','Dominican Republic','République Dominicaine','DO','DOM','1 809'),('Reunión','Réunion','Réunion','RE','REU',''),('Ruanda','Rwanda','Rwanda','RW','RWA','250'),('Rumanía','Romania','Roumanie','RO','ROU','40'),('Rusia','Russia','La Russie','RU','RUS','7'),('Sahara Occidental','Western Sahara','Sahara Occidental','EH','ESH',''),('Samoa','Samoa','Samoa','WS','WSM','685'),('Samoa Americana','American Samoa','Les Samoa américaines','AS','ASM','1 684'),('San Bartolomé','Saint Barthélemy','Saint-Barthélemy','BL','BLM','590'),('San Cristóbal y Nieves','Saint Kitts and Nevis','Saint Kitts et Nevis','KN','KNA','1 869'),('San Marino','San Marino','San Marino','SM','SMR','378'),('San Martín (Francia)','Saint Martin (French part)','Saint-Martin (partie française)','MF','MAF','1 599'),('San Pedro y Miquelón','Saint Pierre and Miquelon','Saint-Pierre-et-Miquelon','PM','SPM','508'),('San Vicente y las Granadinas','Saint Vincent and the Grenadines','Saint-Vincent et Grenadines','VC','VCT','1 784'),('Santa Elena','Ascensión y Tristán de Acuña','Ascensión y Tristan de Acuña','SH','SHN','290'),('Santa Lucía','Saint Lucia','Sainte-Lucie','LC','LCA','1 758'),('Santo Tomé y Príncipe','Sao Tome and Principe','Sao Tomé et Principe','ST','STP','239'),('Senegal','Senegal','Sénégal','SN','SEN','221'),('Serbia','Serbia','Serbie','RS','SRB','381'),('Seychelles','Seychelles','Les Seychelles','SC','SYC','248'),('Sierra Leona','Sierra Leone','Sierra Leone','SL','SLE','232'),('Singapur','Singapore','Singapour','SG','SGP','65'),('Siria','Syria','Syrie','SY','SYR','963'),('Somalia','Somalia','Somalie','SO','SOM','252'),('Sri lanka','Sri Lanka','Sri Lanka','LK','LKA','94'),('Sudáfrica','South Africa','Afrique du Sud','ZA','ZAF','27'),('Sudán','Sudan','Soudan','SD','SDN','249'),('Suecia','Sweden','Suède','SE','SWE','46'),('Suiza','Switzerland','Suisse','CH','CHE','41'),('Surinám','Suriname','Surinam','SR','SUR','597'),('Svalbard y Jan Mayen','Svalbard and Jan Mayen','Svalbard et Jan Mayen','SJ','SJM',''),('Swazilandia','Swaziland','Swaziland','SZ','SWZ','268'),('Tadjikistán','Tajikistan','Le Tadjikistan','TJ','TJK','992'),('Tailandia','Thailand','Thaïlande','TH','THA','66'),('Taiwán','Taiwan','Taiwan','TW','TWN','886'),('Tanzania','Tanzania','Tanzanie','TZ','TZA','255'),('Territorio Británico del Océano Índico','British Indian Ocean Territory','Territoire britannique de l\'océan Indien','IO','IOT',''),('Territorios Australes y Antárticas Franceses','French Southern Territories','Terres australes françaises','TF','ATF',''),('Timor Oriental','East Timor','Timor-Oriental','TL','TLS','670'),('Togo','Togo','Togo','TG','TGO','228'),('Tokelau','Tokelau','Tokélaou','TK','TKL','690'),('Tonga','Tonga','Tonga','TO','TON','676'),('Trinidad y Tobago','Trinidad and Tobago','Trinidad et Tobago','TT','TTO','1 868'),('Tunez','Tunisia','Tunisie','TN','TUN','216'),('Turkmenistán','Turkmenistan','Le Turkménistan','TM','TKM','993'),('Turquía','Turkey','Turquie','TR','TUR','90'),('Tuvalu','Tuvalu','Tuvalu','TV','TUV','688'),('Ucrania','Ukraine','L\'Ukraine','UA','UKR','380'),('Uganda','Uganda','Ouganda','UG','UGA','256'),('Uruguay','Uruguay','Uruguay','UY','URY','598'),('Uzbekistán','Uzbekistan','L\'Ouzbékistan','UZ','UZB','998'),('Vanuatu','Vanuatu','Vanuatu','VU','VUT','678'),('Venezuela','Venezuela','Venezuela','VE','VEN','58'),('Vietnam','Vietnam','Vietnam','VN','VNM','84'),('Wallis y Futuna','Wallis and Futuna','Wallis et Futuna','WF','WLF','681'),('Yemen','Yemen','Yémen','YE','YEM','967'),('Yibuti','Djibouti','Djibouti','DJ','DJI','253'),('Zambia','Zambia','Zambie','ZM','ZMB','260'),('Zimbabue','Zimbabwe','Zimbabwe','ZW','ZWE','263');
+/*!40000 ALTER TABLE `pais` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `puntosmes`
+--
+
+DROP TABLE IF EXISTS `puntosmes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `puntosmes` (
+  `id` int(11) DEFAULT NULL,
+  `puntos` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `puntosmes`
+--
+
+LOCK TABLES `puntosmes` WRITE;
+/*!40000 ALTER TABLE `puntosmes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `puntosmes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'catalogo'
+--
+/*!50003 DROP FUNCTION IF EXISTS `diaSemana` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `diaSemana`(n int) RETURNS varchar(10) CHARSET utf8
+    DETERMINISTIC
+    COMMENT 'Recibe un numero entero entre 1 y 7 y devuelve el dia de la semana, si lo introducido no es [1-7] devuelve null'
+begin
+	declare nombreSemana varchar(10) default null;
+	CASE n
+		when 1 then
+			set nombreSemana='Lunes';
+		when 2 then
+			set nombreSemana='Martes';
+		when 3 then
+			set nombreSemana='Miercoles';
+		when 4 then
+			set nombreSemana='Jueves';
+		when 5 then
+			set nombreSemana='Viernes';
+		when 6 then
+			set nombreSemana='Sabado';
+		when 7 then
+			set nombreSemana='Domingo';
+		else
+			set nombreSemana=null;
+	END CASE;
+	return nombreSemana;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `esPalindromoReverse` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `esPalindromoReverse`(cadena varchar(255)) RETURNS tinyint(1)
+    DETERMINISTIC
+    COMMENT 'comprueba si una cadena es palindromo 0 falso 1 true'
+begin
+	IF cadena = reverse(cadena) THEN
+		return true;
+	ELSE
+		return false;
+	END if;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `esPrimo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `esPrimo`(n int) RETURNS tinyint(1)
+    DETERMINISTIC
+    COMMENT 'Funcion que determina si un numero es primo o no '
+begin
+	declare contador int default 2;
+	declare divisor bool default true;
+	IF n < 2 THEN
+		return null;
+	ELSE
+		WHILE contador <= n/2 DO
+			IF (n % contador = 0) THEN
+				set divisor = false;
+				return divisor;
+			END IF;
+			set contador=contador+1;
+		END WHILE;
+	END IF;
+	return divisor;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `maxTres` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `maxTres`(n1 int, n2 int, n3 int) RETURNS int(11)
+    DETERMINISTIC
+    COMMENT 'Recibe tres numeros y devuelve el mayor de los tres'
+begin
+	IF n1 > n2 and n1 > n3 THEN
+		return n1;
+	ELSEIF n2 > n1 and n2 > n3 THEN
+		return n2;
+	ELSE
+		return n3;
+	END IF;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `sucesion` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `sucesion`(m int) RETURNS decimal(20,19)
+    DETERMINISTIC
+    COMMENT 'devuelve la sucesion de 1/n numeros'
+begin
+	declare suma decimal(20,19) default 0;
+	WHILE m > 1 DO
+		set suma = suma + 1/m;
+		set m = m-1;
+	END WHILE;
+	return suma;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `sumaN` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `sumaN`(n int) RETURNS int(11)
+    DETERMINISTIC
+    COMMENT 'devuelve la suma de los n primeros numeros indicados'
+begin
+	declare numero int default 0;
+	declare suma int default 0;
+
+	WHILE n > 0 DO
+		set numero = numero + 1;
+		set suma = suma + numero;
+		set n = n-1;
+	END WHILE;
+	return suma;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `actualizarPuntos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarPuntos`()
+    COMMENT 'Actualizar puntos'
+begin
+	declare puntosLocal int default 0;
+	declare puntosVisit int default 0;
+	declare contador int default 1;
+	declare numMaxEquipo int default 0;
+	declare puntosSuma int default 0;
+
+	set numMaxEquipo = (select max(id) from equipo);
+	
+	WHILE contador <= numMaxEquipo DO
+		set puntosLocal = (select sum(substring_index(resultado,'-',1)) from partido where elocal = contador);
+		set puntosVisit = (select sum(substring_index(resultado,'-',-1)) from partido where evisitante = contador);
+
+		IF puntosLocal is null THEN
+			set puntosSuma = puntosVisit;
+		ELSEIF puntosVisit is null THEN
+			set puntosSuma = puntosLocal;
+		ELSE
+			set puntosSuma = puntosLocal+PuntosVisit;
+		END IF;
+
+		update equipo set puntos=puntosSuma where id=contador;
+		set contador = contador+1;
+	END WHILE;
+	select id,nombre,ciudad,puntos from equipo;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteCatalogo` */;
+ALTER DATABASE `catalogo` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCatalogo`(in codDesde smallint, in codHasta smallint, OUT resul tinyint(1))
+    COMMENT 'Eliminacion en la base de datos Catalogo. (Resultado 0) ==> ok, (Resultado -1) ==> Error)'
+begin
+	declare filtro varchar(255) default '';
+	
+	set @orden = 'delete from dvd';
+	
+	if codHasta is not null and codDesde is not null and codHasta > codDesde then
+		set filtro = concat(' where codigo between ',codDesde,' and ',codHasta);
+	elseif codDesde is not null and codHasta is null then
+		set filtro = concat(' where codigo = ',codDesde);
+	elseif codDesde is not null or codHasta is not null then
+		set filtro = concat(' where codigo is null');
+	end if;
+
+
+	set @orden = concat(@orden, filtro);
+
+	PREPARE sentencia from @orden;
+	
+	DEALLOCATE PREPARE sentencia;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+ALTER DATABASE `catalogo` CHARACTER SET utf8 COLLATE utf8_general_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteDVD` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteDVD`(in codDesde smallint, in codHasta smallint, out resul tinyint(1))
+    COMMENT 'Eliminación de registro por rango de codigos'
+begin
+	declare filtro varchar(255) default '';
+
+	set @orden = 'delete from dvd';
+	if codHasta is not null and codDesde is not null and codHasta > codDesde then
+		set filtro = concat(' where codigo between ',codDesde, ' and ',codHasta);
+	elseif codDesde is not null and codHasta is null then
+		set filtro = concat(' where codigo = ',codDesde);
+	elseif codDesde is not null or codHasta is not null then
+		set filtro = concat(' where codigo is null');
+	end if;
+
+	set @orden = concat(@orden, filtro);
+
+	PREPARE sentencia FROM @orden;
+	EXECUTE sentencia;
+	DEALLOCATE PREPARE sentencia;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `encriptar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `encriptar`(cadena varchar(255))
+    COMMENT 'devuele la cadena encriptada un caracter mas del ascii'
+begin
+	declare cadena2 varchar(255) default '';
+	declare caracter char(1) default ' ';
+	declare numCaracter int default 0;
+	declare lenCadena int default 0;
+	declare contador int default 1;
+
+	set lenCadena = CHAR_LENGTH(cadena);
+
+	WHILE contador < lenCadena DO
+		set caracter = substr(cadena,contador,1);
+		set numCaracter = ASCII(caracter);
+		set cadena2 = concat(cadena2,CHAR(numCaracter+1));
+		set contador = contador+1;
+	END WHILE;
+	select cadena2;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `esPalindromo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `esPalindromo`(cadena varchar(255))
+    COMMENT 'comprueba si una cadena es palindromo 0 falso 1 true'
+begin
+	declare cadena2 varchar(255) default '';
+	declare contador int default 0;
+	declare lenght int default 0;
+	set lenght = CHAR_LENGTH(cadena);
+	
+	WHILE contador <= lenght DO
+		set cadena2 = concat(cadena2,(select substr(cadena,lenght,1)));
+		set lenght = lenght-1;
+	END WHILE;
+
+	select cadena;
+	select cadena2;
+
+	IF cadena = cadena2 THEN
+		select 'true';
+	ELSE
+		select 'false';
+	END IF;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `generarPrimos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `generarPrimos`(m int, out salida int)
+    COMMENT 'muestra m numeros primos, y salida muestra el numero total mostrado'
+begin
+	declare numSeguidos int default 2;
+	declare numDePrimos int default 0;
+	declare contador int default 2;
+	declare divisor bool default true;
+
+	truncate primos;
+	WHILE numSeguidos <= m DO
+		WHILE contador <= numSeguidos/2 DO
+			IF (numSeguidos % contador = 0) THEN
+				set divisor = false;
+			END IF;
+			set contador=contador+1;
+		END WHILE;
+
+		IF divisor is true THEN
+			insert into primos (numero) values (numSeguidos);
+			set numDePrimos = numDePrimos+1;
+		END IF;
+
+		set divisor = true;
+		set contador = 2;
+		set numSeguidos = numSeguidos+1;
+
+	END WHILE;
+	set salida = numDePrimos;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertCatalogo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertCatalogo`(codi smallint(6), titu varchar(40), arti varchar(30), pa char(2), comp varchar(4), prec decimal(6,2), an smallint(6), OUT resul tinyint(1))
+    COMMENT 'Insertar en la base de datos Catalogo. (Resultado 0) ==> ok, (Resultado -1) ==> Error)'
+begin
+	declare pkError condition for SQLSTATE '23000';
+	declare encontrado int;
+	declare paisError int;
+	
+	
+	
+	select count(*) into encontrado from dvd where codigo = codi;
+	
+
+	select count(*) into paisError from pais where iso2 = pa;
+
+	if encontrado <> 0 then
+		SIGNAL pkError 
+		SET MESSAGE_TEXT = 'Código de disco repetido', MYSQL_ERRNO = 1062;
+	elseif paisError = 0 then
+		signal pkError
+		set MESSAGE_TEXT = 'Codigo de pais desconocido', MYSQL_ERRNO = 1452;
+	else
+		insert into dvd (codigo, titulo, artista, pais, compania ,precio, anio) values (codi, titu, arti, pa, comp ,prec, an);
+	end if;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `insertDVD` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertDVD`(codi smallint(6), titu varchar(40), arti varchar(30), elPais char(2), comp varchar(40), prec decimal(6,2), anio char(4), out resul tinyint(1))
+    COMMENT 'Inserción de registro en el modelo de datos. (Resul 0) => ok, (Resul -1 => error'
+begin
+	declare pkError condition for SQLSTATE '23000';
+	declare encontrado int;
+	declare paisError int;
+
+	select count(*) into encontrado from dvd where codigo = codi;
+	select count(*) into paisError from pais where iso2 = elPais;
+	
+
+	if encontrado <> 0 then
+		SIGNAL pkError
+		SET MESSAGE_TEXT = 'Código de disco repetido', MYSQL_ERRNO = 1062;
+	elseif paisError = 0 then
+		SIGNAL pkError
+		SET MESSAGE_TEXT = 'Código de pais desconocido', MYSQL_ERRNO = 1452;
+	else
+		insert into dvd (codigo, titulo, artista, pais, compania, precio, anio) values
+		(codi, titu, arti, elPais, comp, prec, anio);
+	end if;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `puntosMes` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `puntosMes`(n int)
+    COMMENT 'Calculo los puntos al mes de cada equipo, crea la table si no esta creada, la muestra y la elimina.'
+begin
+	
+	declare puntosLocal int default 0;
+	declare puntosVisit int default 0;
+	declare contador int default 1;
+	declare numMaxEquipo int default 0;
+	declare puntosSuma int default 0;
+	
+	drop table if exists puntosMes;
+	create temporary table puntosMes (id int,puntos int);
+	set numMaxEquipo = (select max(id) from equipo);
+	
+	WHILE contador <= numMaxEquipo DO
+		set puntosLocal = (select sum(substring_index(resultado,'-',1)) from partido where elocal = contador and substring_index(substring_index(fecha,'-',2),'-',-1) = n);
+		set puntosVisit = (select sum(substring_index(resultado,'-',-1)) from partido where evisitante = contador and substring_index(substring_index(fecha,'-',2),'-',-1) = n);
+
+		IF puntosLocal is null and puntosVisit is null THEN
+			set puntosSuma = 0;
+		ELSEIF puntosLocal is null THEN
+			set puntosSuma = puntosVisit;
+		ELSEIF puntosVisit is null THEN
+			set puntosSuma = puntosLocal;
+		ELSE
+			set puntosSuma = puntosLocal+PuntosVisit;
+		END IF;
+		
+		insert into puntosMes (id, puntos) values (contador, puntosSuma);
+		set contador = contador+1;
+	END WHILE;
+	select * from puntosMes;
+	drop table puntosMes;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `selectCatalogo` */;
+ALTER DATABASE `catalogo` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selectCatalogo`(codi smallint(6), titu varchar(40), arti varchar(30), pa char(2), comp varchar(4), precTope decimal(6,2), an char(4), OUT resul tinyint(1))
+    COMMENT 'Select en la base de datos Catalogo. (Resultado 0) ==> ok, (Resultado -1) ==> Error)'
+begin
+	declare filtro varchar(255) default '';
+	
+	set @orden = 'select codigo, titulo, artista, pais, compania, precio, anio from dvd';
+	
+	if codi is not null then
+		set filtro = concat(' where codigo=',codi);
+	end if;
+
+	if titu is not null then
+		if filtro = '' then
+			set filtro = concat(' where titulo rlike "',titu,'"');
+		else
+			set filtro = concat(filtro,'and titulo rlike"',titu,'"');
+		end if;
+	end if;
+
+	if arti is not null then
+		if filtro = '' then
+			set filtro = concat(' where artista rlike "',arti,'"');
+		else
+			set filtro = concat(filtro,'and artista rlike"',arti,'"');
+		end if;
+	end if;
+
+	if pa is not null then
+		if filtro = '' then
+			set filtro = concat(' where pais rlike "',pa,'"');
+		else
+			set filtro = concat(filtro,'and pais rlike"',pa,'"');
+		end if;
+	end if;
+
+	if comp is not null then
+		if filtro = '' then
+			set filtro = concat(' where compania rlike "',comp,'"');
+		else
+			set filtro = concat(filtro,'and compania rlike"',comp,'"');
+		end if;
+	end if;
+
+	if precTope is not null then
+		if filtro = '' then
+			set filtro = concat(' where precio < "',precTope,'"');
+		else
+			set filtro = concat(filtro,'and precio <"',precTope,'"');
+		end if;
+	end if;
+
+	if an is not null then
+		if filtro = '' then
+			set filtro = concat(' where anio="',an,'"');
+		else
+			set filtro = concat(filtro,'and anio="',an,'"');
+		end if;
+	end if;
+
+	set @orden = concat(@orden, filtro);
+
+	PREPARE sentencia from @orden;
+	EXECUTE sentencia;
+	DEALLOCATE PREPARE sentencia;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+ALTER DATABASE `catalogo` CHARACTER SET utf8 COLLATE utf8_general_ci ;
+/*!50003 DROP PROCEDURE IF EXISTS `selectDVD` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `selectDVD`(codi smallint(6), titu varchar(40), arti varchar(30), elPais char(2), comp varchar(40), prec decimal(6,2), elAnio char(4), out resul tinyint(1))
+    COMMENT 'Selección de registro desde el modelo de datos. (Resul 0) => ok, (Resul -1 => error'
+begin
+	declare filtro varchar(255) default '';
+
+	set @orden = 'select codigo, titulo, artista, pais, compania, precio, anio from dvd';
+
+	if codi is not null then
+		set filtro = concat(' where codigo= ',codi);	
+	end if;
+
+	if titu is not null then
+		if filtro = '' then
+			set filtro = concat(' where titulo rlike "',titu, '"');
+		else 
+			set filtro = concat(filtro, ' and titulo rlike "',titu, '"');
+		end if;
+	end if;
+
+	if arti is not null then
+		if filtro = '' then
+			set filtro = concat(' where artista rlike "',arti, '"');
+		else 
+			set filtro = concat(filtro, ' and artista rlike "',arti, '"');
+		end if;
+	end if;
+
+	if elPais is not null then
+		if filtro = '' then
+			set filtro = concat(' where pais = "',elPais, '"');
+		else 
+			set filtro = concat(filtro, ' and pais = "',elPais, '"');
+		end if;
+	end if;
+
+	if comp is not null then
+		if filtro = '' then
+			set filtro = concat(' where compania rlike "',comp, '"');
+		else 
+			set filtro = concat(filtro, ' and compania rlike "',comp, '"');
+		end if;
+	end if;
+
+	if prec is not null then
+		if filtro = '' then
+			set filtro = concat(' where precio <= ',prec);
+		else 
+			set filtro = concat(filtro, ' and precio <= ',prec);
+		end if;
+	end if;
+
+	if elAnio is not null then
+		if filtro = '' then
+			set filtro = concat(' where anio = "',elAnio, '"');
+		else 
+			set filtro = concat(filtro, ' and anio = "',elAnio, '"');
+		end if;
+	end if;
+
+	set @orden = concat(@orden, filtro);
+
+	PREPARE sentencia FROM @orden;
+	EXECUTE sentencia;
+	DEALLOCATE PREPARE sentencia;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `updateCatalogo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCatalogo`(codi smallint(6), titu varchar(40), arti varchar(30), pa char(2), comp varchar(4), precTope decimal(6,2), an char(4), OUT resul tinyint(1))
+    COMMENT 'Update de la base de datos Resultado = 0 || Resultado = 1'
+begin
+	declare unAnio char(4) default null;
+
+	if an <= year(now()) then
+		set unAnio = an;
+	end if;
+
+	update dvd
+	set titulo = titu,
+	    artista = arti,
+	    pais = pa,
+	    compania = comp,
+	    precio = precTope,
+	    anio = unAnio
+	where codigo = codi;
+	
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `updateDVD` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateDVD`(codi smallint(6), titu varchar(40), arti varchar(30), elPais char(2), comp varchar(40), prec decimal(6,2), elAnio char(4), out resul tinyint(1))
+    COMMENT 'Actualización del registro identificado por codi'
+begin
+	declare unAnio char(4) default null;
+
+	if elAnio <= year(now()) then
+		set unAnio = elAnio;
+	end if;
+
+	update dvd
+	set titulo = titu, 
+		artista = arti,
+		pais = elPais,
+		compania = comp,
+		precio = prec,
+		anio = unAnio
+	where codigo = codi;
+
+	set resul = 0;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-04-25 12:03:36

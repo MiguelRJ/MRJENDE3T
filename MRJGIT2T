@@ -1,0 +1,108 @@
+git status
+git add
+git commit -am
+git log
+touch .gitignore 
+	*.exe
+	*.[oa]
+	*.~
+	*.csproj
+git diff
+git diff --cached | --staged
+
+14/02/////////////////////////////////////////////////////////////////////
+m -fr proyecto1/
+git init proyecto1  ---> Initialized empty Git repository in /home/usuario/Escritorio/git/proyecto1/.git/
+git rm --cached Readme ---> 'ignora' el Readme
+vi .gitignore  --> :wq :q! *i* para escribir
+git commit -m "primer commit" -m "Este es el inicio del proyecto donde se ha añadido el .gitignore, el readme y se ha inicializado el main.cs"
+
+git commit -m "code compilable"
+git commit --amend -m "code no complilable"
+
+tagear es verisonar los commit
+
+HEAD apunta el ultimo commit de esa rama y resetea al ultimo commit de la rama el fichero indicado
+
+touch clase1.cs
+touch clase2.cs
+git add *.cs
+git reset HEAD clase2.cs ---> quita el fichero del estado de preparacion (segunda columna)
+
+git reflog ---> lista de los logs
+
+git reset *numerosdelsha* ---> para que el puntero apunte al commit indicado, guardando los demas commit
+si añadimos --hard ---> todos los commit posteriores al indicado desapareceran
+
+
+02-16//////////////////////////////////////////////////////////////////
+
+git init --bare
+
+pull = fetch + merge (trae y combina)
+
+git remote add github ../github/
+
+git push github master
+
+git remote -v
+
+git clone github/ proyectoClonado
+
+02-21//////////////////////////////////////////////////////////////////////
+
+git fetch remoto/local
+
+git pull origin master = git fetch + git merge
+
+git diff origin master
+
+git merge origin master
+
+02-23/////////////////////////////////////////////////////////
+
+git push origin master    	publica la rama master al remote orgiin
+
+03-06///////////////////////////////////////////////////////////
+
+git init --bare github         repositorio como si fuera remoto
+
+git remote show origin		datos
+
+etiquetado de versiones: 0.0.0.0
+1º calidad y visualizacion
+2º temas relacionados con mantenimineto perceptivo añadido y ampliacion de la funcionces de mi aplicacion
+3º arreglo de errores, mantenimiento correctivo, par estable impar inestable
+
+git tag -a v0.0.2 -m 'Etiqueta 0.0.2' 	para etiquetar
+git tag 		para verlos
+git show v0.0.2		la info de la etiqueta y su commit
+
+git push origin v0.0.1		subir eqtiquetas a remoto
+git pull origin --tags		obtener als etiquetas
+
+gpg		
+cd .gnupg/
+sudo apt-get install rng-tools
+sudo service rng-tools start
+seahorse
+gpg --list-secret-keys --keyid-format LONG
+git config --global user.signingkey CFDA5D6B009B1348
+git tag -s v.0.0.3 -m 'Etiqueta firmada por mi'
+
+03-14///////////////////////////////////////////////////////////////////
+git branch bug4g
+git checkout bug4g
+git checkout master
+git merge bug4g -- incorpora los commits de la rama bug4g a la rama master
+git branch -d bug4g -- delete la rama especificada
+git stash
+
+paralo toodoo!!!!!!!!
+git checkout -b bug4g  -- vete a la rama nueva que si no existe la crea (-b) bug4g
+git branch --- ver ramas
+git merge bug4g
+git branch -d bu44g
+
+
+

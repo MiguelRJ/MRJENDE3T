@@ -1,0 +1,23 @@
+03-28
+	Rebase
+	no ahcer nunca rebase de un commit ya publicado
+	usuarios que no pueden hacer push pero pueden pedir ahcer el push
+	git rebase bug
+	git rebase -i 
+		pick usa el commit
+		reword uas el commit y cambia el mensaje
+		edit editar commit en el rebasing
+		squash juntar mensajes de commits el indicado y el previo (el de arriba)
+		fixup descarta el commit
+		
+
+	Ramas
+	la rama bug se podan y se añaden al final en vez de hacer un merge
+	c0 - c1 - c2 ----- c5   |  c0 - c1 - c2 - x\x - c3 -c4
+	       \ - c3 -c4 /     |	 x\x - c3 - c4
+	
+	REBASING && STASHING
+
+	git stash
+	---
+	git stash [ pop | stash@{0} ]

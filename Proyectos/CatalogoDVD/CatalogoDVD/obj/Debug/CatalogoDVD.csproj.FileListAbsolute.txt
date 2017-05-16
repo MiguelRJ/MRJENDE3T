@@ -1,0 +1,7 @@
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\bin\Debug\CatalogoDVD.exe.config
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\bin\Debug\CatalogoDVD.exe
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\bin\Debug\CatalogoDVD.pdb
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\obj\Debug\CatalogoDVD.csprojResolveAssemblyReference.cache
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\obj\Debug\CatalogoDVD.exe
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\obj\Debug\CatalogoDVD.pdb
+D:\TrabajarAsignaturas\Entornos de desarrollo\Proyectos\CatalogoDVD\CatalogoDVD\bin\Debug\MySql.Data.dll
