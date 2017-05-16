@@ -162,7 +162,10 @@ namespace CatalogoDVD
                     undvd.Artista = lector["artista"].ToString();
                     undvd.Pais = lector["pais"].ToString();
                     undvd.Compania = lector["compania"].ToString();
-                    undvd.Precio = double.Parse(lector["precio"].ToString());
+                    if (!DBNull.Value.Equals(lector["precio"]))
+                    {
+                        undvd.Precio = double.Parse(lector["precio"].ToString());
+                    }
                     undvd.Anio = lector["anio"].ToString();
                 
                     resultado.Add(undvd); 

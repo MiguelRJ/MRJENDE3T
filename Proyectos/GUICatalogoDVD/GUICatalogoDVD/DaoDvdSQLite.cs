@@ -110,7 +110,10 @@ namespace CatalogoDVD
                     undvd.Artista = lector["artista"].ToString();
                     undvd.Pais = lector["pais"].ToString();
                     undvd.Compania = lector["compania"].ToString();
-                    undvd.Precio = double.Parse(lector["precio"].ToString());
+                    if (!DBNull.Value.Equals(lector["precio"]))
+                    {
+                        undvd.Precio = double.Parse(lector["precio"].ToString());
+                    }
                     undvd.Anio = lector["anio"].ToString();
 
                     resultado.Add(undvd);
@@ -169,7 +172,7 @@ namespace CatalogoDVD
             string orden;
             if (unDVD != null)
             {
-                orden = "update dvd set titulo='" + unDVD.Titulo + "', artista='" + unDVD.Artista + "', pais='" + unDVD.Pais + "', compania='" + unDVD.Compania + "', precio='" + unDVD.Precio + "', anio='" + unDVD.Anio + "' where codigo=" + unDVD.Codigo;
+                orden = "update dvd set titulo='" + unDVD.Titulo + "', artista='" + unDVD.Artista + "', pais='" + unDVD.Pais + "', compania='" + unDVD.Compania + "', precio='" + unDVD.Precio.ToString().Replace(",",".") + "', anio='" + unDVD.Anio + "' where codigo=" + unDVD.Codigo;
                 SQLiteCommand cmd = new SQLiteCommand(orden, conexion);
                 return cmd.ExecuteNonQuery();
             }
