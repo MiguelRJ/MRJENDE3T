@@ -3,6 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:CatalogoDVD="clr-namespace:CatalogoDVD" x:Class="GUICatalogoDVD.MainWindow"
         Title="Catalogo DVDs" Height="350" Width="525" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <AlternationConverter x:Key="AlternationConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Window.DataContext>
         <CatalogoDVD:CatalogoVM/>
     </Window.DataContext>

@@ -116,6 +116,8 @@ namespace CatalogoDVD
                     }
                     undvd.Anio = lector["anio"].ToString();
 
+                    //undvd.ItemEdit += new listadodvd.itemediteventhandeler(undvd.itemedit());
+
                     resultado.Add(undvd);
                 }
 

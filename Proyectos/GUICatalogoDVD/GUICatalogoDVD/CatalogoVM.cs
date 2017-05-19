@@ -20,7 +20,6 @@ namespace CatalogoDVD
         string _mensaje = "<Sin datos>";
         string nombrePais = string.Empty;
         Dvd _dvd;
-
         
         #endregion
 
@@ -257,5 +256,12 @@ namespace CatalogoDVD
             }
         }
         #endregion
+
+        //void listado dvditemedit(editableobject sender)
+        //{
+        //    listadodvd customerobject = sender as lsitado;
+
+
+        //}
     }
 }

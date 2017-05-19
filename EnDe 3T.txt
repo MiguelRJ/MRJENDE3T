@@ -1,4 +1,4 @@
-03-28
+﻿03-28
 	Rebase
 	no ahcer nunca rebase de un commit ya publicado
 	usuarios que no pueden hacer push pero pueden pedir ahcer el push
@@ -21,3 +21,4 @@
 	git stash
 	---
 	git stash [ pop | stash@{0} ]
+https://www.codeproject.com/Articles/30905/WPF-DataGrid-Practical-Examples
